@@ -1,29 +1,30 @@
 Target = game
-
+INCLUDES = Includes
 CXX = g++
 
-CXXFLAGS = -std=c++11 -g -ggdb
+CXXFLAGS = -std=c++11 -g -ggdb -I $(INCLUDES)
 
 SRCDIR = src
 OBJDIR = obj
 
 SOURCES := $(wildcard $(SRCDIR)/*.cpp)
-OBJECTS := $(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/*.o)
+#OBJECTS := $(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 rm = rm -f
 
-$(Target): $(OBJECTS)
-	@$(CXX) $(OBJECTS) $(CXXFLAGS) -o $@
+$(Target): $(SOURCES) $(INCLUDES)/*.hpp
+	@$(CXX) $(SOURCES) $(CXXFLAGS) -o $@
 	@echo "Linkin complete!"
-$(OBJECTS):	$(OBJDIR)/%.o | $(OBJDIR): $(SRCDIR)/%.cpp 
-	@$(CXX) $(CXXFLAGS) -c $< -o $@
-	@echo "Compiled "$<" Succesfully!"
+#$(OBJECTS):	$(SOURCES) | $(OBJDIR)
+#	@$(CXX) $(CXXFLAGS) -c $< -o $@
+#	@echo "Compiled "$<" Succesfully!"
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
 .PHONY: clean
 clean:
-	@$(rm) $(OBJECTS)
+#	@$(rm) $(OBJECTS)
+	rm $(Target)
 	@echo "Cleanup Complete!"
 remove:	clean
 	@$(rm) $(Target)

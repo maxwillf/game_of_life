@@ -1,3 +1,9 @@
+#ifndef CLASSES
+#define CLASSES
+#include <iostream>
+#include <iterator>
+#include <vector>
+
 class Cell
 {
 protected:
@@ -24,4 +30,4 @@ public:
   int NeighborsCount(int Line,int Col);
   void CellBirth(int Line,int Col);
 };
-
+#endif

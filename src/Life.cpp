@@ -1,4 +1,9 @@
-#include "Life.hpp"
+#include "../Includes/Life.hpp"
+
+Cell::Cell ()
+{
+	alive = false;
+}
 
 bool Cell::Status() /*!< Indicates if a cell is alive or not */
 
@@ -6,7 +11,7 @@ bool Cell::Status() /*!< Indicates if a cell is alive or not */
     return alive;
   }
 
-Cell & Cell::operator=(bool i)
+Cell& Cell::operator=(bool i)
   {
     alive = i;
     return *this;
