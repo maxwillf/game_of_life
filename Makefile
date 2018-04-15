@@ -16,7 +16,7 @@ $(Target):	$(DRIVER)  $(OBJECTS) $(INCLUDES)/*.hpp
 	@echo "Linkin complete!"
 $(OBJECTS):	$(SOURCES) | $(OBJDIR)
 	@$(CXX) $(CXXFLAGS) -c $^
-	@mv $^ obj
+	@mv *.o obj
 	@echo "Sources "$(SOURCES) 
 	@echo "Compiling Files $< to  $@ "
 	@echo "Compiled "$<" Succesfully!"
