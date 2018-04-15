@@ -14,10 +14,10 @@ $(Target):	$(DRIVER)  $(OBJECTS) $(INCLUDES)/*.hpp
 	@echo "Linkin Files: " $(OBJECTS) $(DRIVER)
 	@$(CXX) $(OBJECTS) $(DRIVER)  $(CXXFLAGS) -o $@
 	@echo "Linkin complete!"
-$(OBJECTS):	$(SOURCES) | $(OBJDIR)
-	@$(CXX) $(CXXFLAGS) -c $^
-	@mv *.o obj
-	@echo "Sources "$(SOURCES) 
+	
+$(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.cpp | $(OBJDIR)
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
+	@echo "Sources $<" 
 	@echo "Compiling Files $< to  $@ "
 	@echo "Compiled "$<" Succesfully!"
 
@@ -29,6 +29,3 @@ clean:
 	@rm -r $(OBJDIR)
 	@rm $(Target)
 	@echo "Cleanup Complete!"
-#remove:	clean
-#	@rm $(Target)
-#	@echo "Executable removed!"
