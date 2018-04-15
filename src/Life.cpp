@@ -1,4 +1,6 @@
 #include "Cell.hpp"
+#include "Life.hpp"
+#include <iostream>
 Life::Life (int nLin, int nCol)
   {
 
