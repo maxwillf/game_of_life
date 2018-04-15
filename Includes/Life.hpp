@@ -1,33 +1,13 @@
-#ifndef _CLASSES
-#define _CLASSES
-#include <iostream>
-#include <iterator>
-#include <vector>
+#ifndef _Life
+#define _Life
 #include <cassert>
-
-typedef struct Alive{
-  int Line;
-  int Col;
-}Alive;
-
-class Cell
-{
-protected:
-  bool alive;
-public:
-  extern Cell();
-  bool Status();/*!< Indicates if a cell is alive or not */
-  Cell & operator=(bool i);
-};
-
+#include "Cell.hpp"
 class Life: public Cell
 {
 protected:
   int NLin; /*! Grid Height; */
   int NCol; /*! Grid Width; */
   Cell ** Grid;
-  //  std::vector <int> Alive_lin; /*! Line Index for Alive cells */
-  //  std::vector <int> Alive_col; /*! Line Index for Alive cells */
 public:
   Life (int nLin, int nCol);
   ~Life();
@@ -41,7 +21,6 @@ public:
   Life& operator=(const Life& rhs);
 };
 
-//Class Generation: public Life
 #endif
 
 

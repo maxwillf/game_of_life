@@ -1,4 +1,7 @@
-#include "../Includes/Life.hpp"
+#include "Life.hpp"
+#include "Cell.hpp"
+#include <iostream>
+
 int main(int argc, char *argv[])
 {
   Life Try (8,8);
