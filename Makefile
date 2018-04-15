@@ -1,16 +1,15 @@
 Target = game
 INCLUDES = Includes
 CXX = g++
-DRIVER = src/game.cpp
 CXXFLAGS = -std=c++11 -g -ggdb -I $(INCLUDES)
 
 SRCDIR = src
 OBJDIR = obj
 
-SOURCES := $(filter-out $(DRIVER), $(wildcard $(SRCDIR)/*.cpp))
+SOURCES := $(wildcard $(SRCDIR)/*.cpp)
 OBJECTS := $(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 
-$(Target):	$(DRIVER)  $(OBJECTS) $(INCLUDES)/*.hpp
+$(Target): $(OBJECTS) $(INCLUDES)/*.hpp
 	@echo "Linkin Files: " $(OBJECTS) $(DRIVER)
 	@$(CXX) $(OBJECTS) $(DRIVER)  $(CXXFLAGS) -o $@
 	@echo "Linkin complete!"
