@@ -17,6 +17,7 @@ $(Target):	$(DRIVER)  $(OBJECTS) $(INCLUDES)/*.hpp
 	@echo "Linkin complete!"
 $(OBJECTS):	$(SOURCES) | $(OBJDIR)
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
+	@echo "Compiling Files $< to  $@ "
 	@echo "Compiled "$<" Succesfully!"
 
 $(OBJDIR):
@@ -24,7 +25,8 @@ $(OBJDIR):
 
 .PHONY: clean
 clean:
-	@rm -r $(OBJDIR) rm $(Target)
+	@rm -r $(OBJDIR)
+	@rm $(Target)
 	@echo "Cleanup Complete!"
 #remove:	clean
 #	@rm $(Target)
