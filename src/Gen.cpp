@@ -7,14 +7,44 @@ Gen::Gen (int nLin, int nCol)
     NLin = nLin;
     NCol = nCol;
 
-    Grid = new Cell *[nLin];
+    Grid = new bool *[nLin];
 
     for (int i = 0; i < nLin; ++i) {
-      Grid[i] = new Cell[nCol];
+      Grid[i] = new bool[nCol];
+    }
+
+    Grid = {0};
+    for (int i = 0; i < NLin; ++i) {
+      for (int j = 0; j < NCol; ++j) {
+       Grid[i][j]  = false;
+      }
+    }
+    for (int i = 0; i < NLin; ++i) {
+      for (int j = 0; j < NCol; ++j) {
+        std::cout << Grid[i][j] << std::endl;
+      }
     }
 
   }
 
+/*Gen::Gen(const Gen &gen)
+{
+ NLin = gen.NLin;
+ NCol = gen.NCol;
+
+ Grid = new bool *[gen.NLin];
+
+ for (int i = 0; i < gen.NLin; ++i) {
+   Grid[i] = new bool[gen.NCol];
+ }
+
+ for (int i = 0; i < gen.NLin; ++i) {
+	 for (int j = 0; j < gen.NCol; ++j) {
+     Grid[i][j] = gen.Grid[i][j];
+	 }
+ }
+}
+*/
 Gen::~Gen()
   {
 	for (int i = 0; i < NLin; ++i) {
@@ -31,7 +61,7 @@ int Gen::NeighborsCount(int Line,int Col)
       for (int j = -1; j <=1; ++j) {
         if(( Line+i < NLin and Col+j < NCol  ) and (Line+i > 0 and Col+j > 0)){
           if(!(i == 0 and j == 0)){
-          count += Grid[Line+i][Col+j].Status();
+          count += Grid[Line+i][Col+j];
           }
         }
       }
@@ -40,17 +70,20 @@ int Gen::NeighborsCount(int Line,int Col)
     return count;
   }
 
-void Gen::CellBirth(int Line,int Col)
+void Gen::Birth(int Line,int Col)
   {
     Grid[Line][Col] = true;
   }
-
-bool Gen::Status(int Line, int Col)
+void Gen::Death(int Line, int Col)
 {
-  return Grid[Line][Col].Status();
+  Grid[Line][Col] = false;
 }
+/*bool Gen::Status(int Line, int Col) Deprecated probably
+{
+  return Grid[Line][Col];
+  }*/
 
-Cell& Gen::operator()(int Line, int Col)
+bool Gen::operator()(int Line, int Col)
 {
   assert(Line >= 0 && Line < NLin);
   assert(Col >= 0 && Col < NCol);
@@ -62,7 +95,7 @@ void Gen::Print()
   for (int i = 0; i < NLin; ++i) {
     for (int j = 0; j < NCol; ++j) {
 
-    if ( Grid[i][j].Status() == 1 ){
+    if ( Grid[i][j] == 1 ){
         std::cout << "*";
       }
       else {

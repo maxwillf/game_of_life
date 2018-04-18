@@ -10,7 +10,8 @@ class Life: public Gen
 
 	public:
 	Life(int Nlin, int NCol);
-	~Life();	
+	//Life(Gen &gen);
+	~Life();
 
 
 };

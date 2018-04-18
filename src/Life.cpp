@@ -1,12 +1,12 @@
 #include "Life.hpp"
-
-Life::Life(int NLin, int NCol)
+#include "Gen.hpp"
+/*Life::Life(Gen &gen)
 {
-	Lifespan.push_back(Gen(NLin,NCol));
+	Lifespan.push_back(gen(NLin,NCol));
 }
 
-Life::~Life()
+/*Life::~Life()
 {
- delete [] Lifespan;
-}
+ //delete [] Lifespan;
+} */
 
