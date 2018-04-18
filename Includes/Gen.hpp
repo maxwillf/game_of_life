@@ -1,7 +1,6 @@
 #ifndef _Gen
 #define _Gen
 #include <cassert>
-#include "Cell.hpp"
 class Gen
 {
 protected:

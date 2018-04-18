@@ -1,30 +1,24 @@
-#include "Cell.hpp"
 #include "Gen.hpp"
 #include <iostream>
 Gen::Gen (int nLin, int nCol)
   {
 
-    NLin = nLin;
-    NCol = nCol;
+    assert(nLin >= 0);
+    assert(nCol >= 0);
+    this->NLin = nLin;
+    this->NCol = nCol;
 
-    Grid = new bool *[nLin];
+    this->Grid = new bool *[nLin];
 
     for (int i = 0; i < nLin; ++i) {
-      Grid[i] = new bool[nCol];
+      this->Grid[i] = new bool[nCol];
     }
 
-    Grid = {0};
     for (int i = 0; i < NLin; ++i) {
       for (int j = 0; j < NCol; ++j) {
-       Grid[i][j]  = false;
+        this->Grid[i][j]  = false;
       }
     }
-    for (int i = 0; i < NLin; ++i) {
-      for (int j = 0; j < NCol; ++j) {
-        std::cout << Grid[i][j] << std::endl;
-      }
-    }
-
   }
 
 /*Gen::Gen(const Gen &gen)
@@ -115,5 +109,5 @@ Gen& Gen::operator=(const Gen &rhs)
     }
 
   }
-
+  return *this;
 }
