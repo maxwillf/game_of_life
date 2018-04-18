@@ -1,10 +1,11 @@
-#include "Life.hpp"
+#include "Gen.hpp"
 #include "Cell.hpp"
+#include "Life.hpp"
 #include <iostream>
 
 int main(int argc, char *argv[])
 {
-  Life Try (8,8);
+  Gen Try (8,8);
   Try.CellBirth(2, 2);
   Try.CellBirth(2, 4);
   Try.CellBirth(3, 2);
