@@ -41,17 +41,17 @@ int main(int argc, char *argv[])
   dump.Birth(3, 4);
   dump.Birth(4, 2);
   dump.Birth(4, 4);
-//  Gen dump2 = dump;
+  Gen dump2 = dump;
   for (int i = 0; i < 8; ++i) {
     for (int j = 0; j < 8; ++j) {
-      if(dump(i,j) > 0){
-        std::cout << "i " << i << " j " << j << " Neighbors: " << dump.NeighborsCount(i,j) << std::endl;
+      if(dump2(i,j) > 0){
+        std::cout << "i " << i << " j " << j << " Neighbors: " << dump2.NeighborsCount(i,j) << std::endl;
       }
     }
 
   }
 
-  dump.Print();
+  dump2.Print();
   // Try[1].Print();
   return 0;
 }

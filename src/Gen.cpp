@@ -21,7 +21,7 @@ Gen::Gen (int nLin, int nCol)
     }
   }
 
-/*Gen::Gen(const Gen &gen)
+Gen::Gen(const Gen &gen)
 {
  NLin = gen.NLin;
  NCol = gen.NCol;
@@ -38,7 +38,7 @@ Gen::Gen (int nLin, int nCol)
 	 }
  }
 }
-*/
+
 Gen::~Gen()
   {
 	for (int i = 0; i < NLin; ++i) {

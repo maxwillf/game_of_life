@@ -9,7 +9,7 @@ protected:
   bool ** Grid;
 public:
   Gen (int nLin, int nCol);
-  //Gen(const Gen &gen);
+  Gen(const Gen &gen);
   ~Gen();
 
 
