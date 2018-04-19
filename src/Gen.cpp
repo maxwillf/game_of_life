@@ -44,7 +44,8 @@ Gen::Gen(const Gen &gen)
 	 }
  }
 }
-Gen::~Gen()  /*!< The Class Destructor */
+/*! The Class Destructor */
+Gen::~Gen()  
   {
 	for (int i = 0; i < NLin; ++i) {
 		delete [] Grid[i];
