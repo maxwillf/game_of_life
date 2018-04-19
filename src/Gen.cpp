@@ -83,6 +83,31 @@ bool Gen::operator()(int Line, int Col)
   assert(Col >= 0 && Col < NCol);
   return Grid[Line][Col];
 }
+
+Gen& Gen::operator=(const Gen &rhs)
+{
+  for (int i = 0; i < NLin; ++i) {
+    for (int j = 0; j < NCol; ++j) {
+      Grid[i][j] = rhs.Grid[i][j];
+    }
+
+  }
+  return *this;
+}
+
+bool Gen::operator ==(const Gen & rhs)
+{
+  for(int i = 0; i < NLin; i++){
+    for(int j = 0; j < NCol; j++){
+      if (Grid[i][j] != rhs.Grid[i][j]){
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+
 void Gen::Print()
 {
 
@@ -99,17 +124,6 @@ void Gen::Print()
     std::cout << std::endl;
     }
 
-}
-
-Gen& Gen::operator=(const Gen &rhs)
-{
-  for (int i = 0; i < NLin; ++i) {
-    for (int j = 0; j < NCol; ++j) {
-      Grid[i][j] = rhs.Grid[i][j];
-    }
-
-  }
-  return *this;
 }
 
 bool Gen::Extinct()

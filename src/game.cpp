@@ -1,6 +1,7 @@
 #include "Gen.hpp"
 #include <iostream>
 #include <vector>
+#include <cstring>
 void Update(std::vector <Gen> &Game)
 {
   int count;
@@ -32,19 +33,33 @@ void Update(std::vector <Gen> &Game)
 
 }
 
+bool Stable(std::vector <Gen> &Game)
+{
+	for (int i = 0; i < Game.size()-1; ++i) {
+		if(Game[i] == Game.back()){
+			return true;
+		}
+	}
+	return false;
+}
+
 
 int main(int argc, char *argv[])
 {
   Gen dump(8,8);
   std::vector<Gen> Try;
   Try.push_back(dump);
-  Try[0].Birth(2, 2);
+  /*Try[0].Birth(2, 2);
   Try[0].Birth(2, 4);
   Try[0].Birth(3, 2);
   Try[0].Birth(3, 3);
   Try[0].Birth(3, 4);
   Try[0].Birth(4, 2);
-  Try[0].Birth(4, 4);
+  Try[0].Birth(4, 4); */
+  Try[0].Birth(3,2);
+  Try[0].Birth(3,3);
+  Try[0].Birth(4,2);// STABILITY TEST;
+  Try[0].Birth(4,3); 
   // Update(Try);
   /* for (int i = 0; i < 8; ++i) {
     for (int j = 0; j < 8; ++j) {
@@ -66,6 +81,10 @@ int main(int argc, char *argv[])
       break;
     }
     Try[i].Print();
+     if(Stable (Try)){
+      std::cout <<" Stable at Generation " << i+1 << std::endl;
+      break;
+    } 
     i++;
     Update(Try);
     std::cout << "See the next generation? press y" << std::endl;

@@ -20,9 +20,10 @@ public:
   void Death(int Line, int Col);
   void Print();
   bool Status(int Line, int Col); /*! Deprecated for now */
-  bool operator()(int Line, int Col);/*! Returns Grid[i][j] using tuples (i,j) */
   bool Extinct();
+  bool operator()(int Line, int Col);/*! Returns Grid[i][j] using tuples (i,j) */
   Gen& operator=(const Gen& rhs);
+  bool operator ==(const Gen & rhs);
 };
 
 #endif
