@@ -9,9 +9,9 @@ OBJDIR = obj
 SOURCES := $(wildcard $(SRCDIR)/*.cpp)
 OBJECTS := $(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 
-$(Target): $(OBJECTS) $(INCLUDES)/*.hpp
+all: $(OBJECTS) $(INCLUDES)/*.hpp
 	@echo "Linkin Files: " $(OBJECTS) $(DRIVER)
-	@$(CXX) $(OBJECTS) $(DRIVER)  $(CXXFLAGS) -o $@
+	@$(CXX) $(OBJECTS) $(DRIVER)  $(CXXFLAGS) -o $(Target)
 	@echo "Linkin complete!"
 	
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.cpp | $(OBJDIR)

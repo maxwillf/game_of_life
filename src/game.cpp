@@ -10,17 +10,24 @@ void Update(std::vector <Gen> &Game)
   for (int i = 0; i < Game[index].Linhas(); ++i) {
     for (int j = 0; j < Game[index].Colunas(); ++j) {
 
+      /* std::cout << "I: "<< i << std::endl;
+         std::cout << "J: " << j << std::endl; */
       count = Game[index].NeighborsCount(i,j);
 
       if(Game[index](i,j)){
         if(count < 2 or count > 3){
           Game[index +1 ].Death(i,j);
         }
+        else if(Game[index](i,j)){
+          Game[index +1].Birth(i,j); /* as celulas que não morreram permanecem vivas */
+        } 
+        
       }
       else if(count == 3) {
         Game[index +1 ].Birth(i,j);
 
       }
+      
     }
 
   }
@@ -31,7 +38,6 @@ void Update(std::vector <Gen> &Game)
 int main(int argc, char *argv[])
 {
   Gen dump(8,8);
-  // Try[0].Print();
   std::vector<Gen> Try;
   Try.push_back(dump);
   Try[0].Birth(2, 2);
@@ -41,17 +47,22 @@ int main(int argc, char *argv[])
   Try[0].Birth(3, 4);
   Try[0].Birth(4, 2);
   Try[0].Birth(4, 4);
-  Update(Try);
+  // Update(Try);
   for (int i = 0; i < 8; ++i) {
     for (int j = 0; j < 8; ++j) {
       if(Try[0](i,j) > 0){
         std::cout << "i " << i << " j " << j << " Neighbors: " << Try[0].NeighborsCount(i,j) << std::endl;
       }
     }
-
   }
+  int i = 0;
+  int porra = 0;
+  while(std::cin >> porra){
 
-  Try[0].Print();
-  Try[1].Print();
+  Try[i].Print();
+  i++;
+  Update(Try);
+  std::cout << std::endl;
+  }
   return 0;
 }
