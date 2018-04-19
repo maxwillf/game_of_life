@@ -26,5 +26,5 @@ $(OBJDIR):
 .PHONY: clean
 clean:
 	@rm -r $(OBJDIR)
-	@rm $(Target)
+	@rm $(Target) historico.txt
 	@echo "Cleanup Complete!"

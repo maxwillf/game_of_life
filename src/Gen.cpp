@@ -1,6 +1,10 @@
 #include "Gen.hpp"
-#include <iostream>
+/*! Construtor
+ * \param int nLin : The number of lines in the Grid 
+ * \param int nCol : The number of columns in the Grid 
+  */
 Gen::Gen (int nLin, int nCol)
+
   {
 
     assert(nLin >= 0);
@@ -20,7 +24,9 @@ Gen::Gen (int nLin, int nCol)
       }
     }
   }
-
+/*! Copy Constructor
+ * \param const Gen &gen : The object to be copied
+ * */
 Gen::Gen(const Gen &gen)
 {
  NLin = gen.NLin;
@@ -38,8 +44,7 @@ Gen::Gen(const Gen &gen)
 	 }
  }
 }
-
-Gen::~Gen()
+Gen::~Gen()  /*!< The Class Destructor */
   {
 	for (int i = 0; i < NLin; ++i) {
 		delete [] Grid[i];
@@ -108,21 +113,22 @@ bool Gen::operator ==(const Gen & rhs)
 }
 
 
-void Gen::Print()
+void Gen::Print(std::ostream &out, char alive, char lines)
 {
 
   for (int i = 0; i < NLin; ++i) {
     for (int j = 0; j < NCol; ++j) {
 
     if ( Grid[i][j] == 1 ){
-        std::cout << "*";
+        out << alive;
       }
       else {
-        std::cout << "_";
+        out << lines;
       }
     }
-    std::cout << std::endl;
+    out << std::endl;
     }
+    out << std::endl;
 
 }
 
