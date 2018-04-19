@@ -5,18 +5,18 @@ Gen::Gen (int nLin, int nCol)
 
     assert(nLin >= 0);
     assert(nCol >= 0);
-    this->NLin = nLin;
-    this->NCol = nCol;
+    NLin = nLin;
+    NCol = nCol;
 
-    this->Grid = new bool *[nLin];
+    Grid = new bool *[nLin];
 
     for (int i = 0; i < nLin; ++i) {
-      this->Grid[i] = new bool[nCol];
+      Grid[i] = new bool[nCol];
     }
 
     for (int i = 0; i < NLin; ++i) {
       for (int j = 0; j < NCol; ++j) {
-        this->Grid[i][j]  = false;
+        Grid[i][j]  = false;
       }
     }
   }

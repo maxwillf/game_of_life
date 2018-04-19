@@ -33,14 +33,14 @@ void Update(std::vector <Gen> &Game)
 
 }
 
-bool Stable(std::vector <Gen> &Game)
+int Stable(std::vector <Gen> &Game)
 {
 	for (int i = 0; i < Game.size()-1; ++i) {
 		if(Game[i] == Game.back()){
-			return true;
+			return Game.size()-1-i;
 		}
 	}
-	return false;
+	return 0;
 }
 
 
@@ -60,14 +60,7 @@ int main(int argc, char *argv[])
   Try[0].Birth(3,3);
   Try[0].Birth(4,2);// STABILITY TEST;
   Try[0].Birth(4,3); 
-  // Update(Try);
-  /* for (int i = 0; i < 8; ++i) {
-    for (int j = 0; j < 8; ++j) {
-      if(Try[0](i,j) > 0){
-        std::cout << "i " << i << " j " << j << " Neighbors: " << Try[0].NeighborsCount(i,j) << std::endl;
-      }
-    }
-    } */
+
   int i = 0;
   std::string entry_dump;
   Try[i].Print();
@@ -81,8 +74,9 @@ int main(int argc, char *argv[])
       break;
     }
     Try[i].Print();
-     if(Stable (Try)){
-      std::cout <<" Stable at Generation " << i+1 << std::endl;
+	int stability = Stable(Try);
+     if(stability > 0){
+      std::cout <<" Stable from Generation " << stability<< " To Generation "<<i << std::endl;
       break;
     } 
     i++;
