@@ -46,21 +46,30 @@ int main(int argc, char *argv[])
   Try[0].Birth(4, 2);
   Try[0].Birth(4, 4);
   // Update(Try);
-  for (int i = 0; i < 8; ++i) {
+  /* for (int i = 0; i < 8; ++i) {
     for (int j = 0; j < 8; ++j) {
       if(Try[0](i,j) > 0){
         std::cout << "i " << i << " j " << j << " Neighbors: " << Try[0].NeighborsCount(i,j) << std::endl;
       }
     }
-  }
+    } */
   int i = 0;
-  int porra = 0;
-  while(std::cin >> porra){
-
+  std::string entry_dump;
   Try[i].Print();
   i++;
   Update(Try);
-  std::cout << std::endl;
+  std::cout << "See the next generation? press y" << std::endl;
+  while(std::cin >> entry_dump){
+
+    if((Try[i].Extinct())){
+      std::cout << "Extinct at Generation " << i+1 << std::endl;
+      break;
+    }
+    Try[i].Print();
+    i++;
+    Update(Try);
+    std::cout << "See the next generation? press y" << std::endl;
+    std::cout << std::endl;
   }
   return 0;
 }

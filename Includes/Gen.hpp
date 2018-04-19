@@ -21,6 +21,7 @@ public:
   void Print();
   bool Status(int Line, int Col); /*! Deprecated for now */
   bool operator()(int Line, int Col);/*! Returns Grid[i][j] using tuples (i,j) */
+  bool Extinct();
   Gen& operator=(const Gen& rhs);
 };
 

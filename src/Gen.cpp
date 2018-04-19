@@ -111,3 +111,15 @@ Gen& Gen::operator=(const Gen &rhs)
   }
   return *this;
 }
+
+bool Gen::Extinct()
+{
+	for (int i = 0; i < NLin; ++i) {
+		for (int j = 0; j < NCol; ++j) {
+			if(Grid[i][j]){
+				return false;
+			}	
+		}
+	}
+	return true;
+}
