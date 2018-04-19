@@ -53,7 +53,7 @@ int Gen::NeighborsCount(int Line,int Col)
 
     for (int i = -1; i <=1; ++i) {
       for (int j = -1; j <=1; ++j) {
-        if(( Line+i < NLin and Col+j < NCol  ) and (Line+i > 0 and Col+j > 0)){
+        if(( Line+i < NLin and Col+j < NCol  ) and (Line+i >= 0 and Col+j >= 0)){
           if(!(i == 0 and j == 0)){
           count += Grid[Line+i][Col+j];
           }

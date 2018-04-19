@@ -20,14 +20,12 @@ void Update(std::vector <Gen> &Game)
         }
         else if(Game[index](i,j)){
           Game[index +1].Birth(i,j); /* as celulas que não morreram permanecem vivas */
-        } 
-        
+        }
       }
       else if(count == 3) {
         Game[index +1 ].Birth(i,j);
 
       }
-      
     }
 
   }
