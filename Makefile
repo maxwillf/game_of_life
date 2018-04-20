@@ -16,7 +16,7 @@ project: $(OBJECTS) $(INCLUDES)/*.hpp
 	@$(CXX) $(OBJECTS) $(DRIVER)  $(CXXFLAGS) -o $(Target)
 	@echo "Linkin complete!"
 
-docs: project
+docs: 
 	@echo "Generating Documentation"
 	@doxygen Doxyfile
 	
