@@ -9,10 +9,13 @@ OBJDIR = obj
 SOURCES := $(wildcard $(SRCDIR)/*.cpp)
 OBJECTS := $(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 
-all: $(OBJECTS) $(INCLUDES)/*.hpp
+all: project docs
+project: $(OBJECTS) $(INCLUDES)/*.hpp
 	@echo "Linkin Files: " $(OBJECTS) $(DRIVER)
 	@$(CXX) $(OBJECTS) $(DRIVER)  $(CXXFLAGS) -o $(Target)
 	@echo "Linkin complete!"
+
+docs: project
 	@echo "Generating Documentation"
 	@doxygen Doxyfile
 	
