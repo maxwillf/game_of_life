@@ -2,7 +2,8 @@ Target = game
 INCLUDES = Includes
 CXX = g++
 CXXFLAGS = -std=c++11 -g -ggdb -I $(INCLUDES)
-TEXT = historico.txt
+TEXT = $(filter historico.txt, $(wildcard *.txt)) # If no file generates nothing
+DOCS = html latex
 SRCDIR = src
 OBJDIR = obj
 
@@ -28,11 +29,15 @@ $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.cpp | $(OBJDIR)
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
-.PHONY: clean clean_txt
-clean: $(TEXTS)
+.PHONY: clean clean_txt clean_docs clean_proj
+clean: clean_proj clean_txt clean_docs
+
+clean_proj:
 	@rm -r $(OBJDIR)
-	@rm -r html latex
 	@rm $(Target)
 	@echo "Cleanup Complete!"
 clean_txt: $(TEXT)
-	@rm $(TEXT)
+	@rm -f $(TEXT)
+
+clean_docs: $(DOCS)
+	@rm -r $(DOCS)
