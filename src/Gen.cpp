@@ -78,10 +78,6 @@ void Gen::Death(int Line, int Col)
 {
   Grid[Line][Col] = false;
 }
-/*bool Gen::Status(int Line, int Col) Deprecated probably
-{
-  return Grid[Line][Col];
-  }*/
 
 bool Gen::operator()(int Line, int Col)
 {

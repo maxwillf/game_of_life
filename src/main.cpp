@@ -8,43 +8,20 @@
 
 int Stable(std::vector <Gen> &Game);
 void Update(std::vector <Gen> &Game);
-
+Gen input(std::string filename);
 
 int main(int argc, char *argv[])
 {
   
-  /*	if (argc > 1){
-		function(argv[1]); //stub
-    } */
-  Gen dump(20,20);
+  	if (argc != 2){
+		std::cout << "Please execute like this : ./game input.dat " << std::endl;
+    } 
   std::vector<Gen> Try;
-  Try.push_back(dump);
+  Gen gen1 = input(argv[1]);
+  Try.push_back(gen1);
   std::ofstream ofs("historico.txt");
   int linha, coluna;
-/*  for (int i = 0; i < 8; ++i) {
-  	for (int j = 0; j < 3; ++j) {
-  		if(i == 1 or i == 6 )
-			if(j == 1){
-				continue;
-			}
 
-			Try[0].Birth(5+i,5+j); // Pentadecathlon
-  	}
-  } */
-  
-  Try[0].Birth(2, 2); // Common Test for extinction;
-  Try[0].Birth(2, 4);
-  Try[0].Birth(3, 2);
-  Try[0].Birth(3, 3);
-  Try[0].Birth(3, 4);
-  Try[0].Birth(4, 2);
-  Try[0].Birth(4, 4); 
- 
-  /*Try[0].Birth(3,2);
-    Try[0].Birth(3,3);
-    Try[0].Birth(4,2);// STABILITY TEST;
-    Try[0].Birth(4,3); 
-*/
   int i = 0;
   std::string entry_dump;
   system("clear");
@@ -123,5 +100,43 @@ int Stable(std::vector <Gen> &Game) {
 	return -1;
 }
 
+/*! Initializes a <Gen> object according to a input file
+ *\param std::string filename : Receives the .dat filename
+ */
+Gen input(std::string filename)
+{
+	std::ifstream ifs(filename);
+	std::string line;
+	int Lin,Col;
+	int line_index = 0;
+	int col_index = 0;
+	char alive;	
+	char temp_cell;
+	std::getline(ifs,line);
+	std::stringstream temp(line);
+	temp >> Lin >> Col;
+	std::cout << Lin << Col << std::endl;
+	Gen temp_gen = Gen(Lin,Col);
+	while(std::getline(ifs,line)){
+	
+		std::stringstream temp2(line);
+		if(line_index == 0){
 
+			temp2 >> alive;
+		}
+		else {
+
+			while(temp2 >> temp_cell){
+			//	std::cout << col_index << "  " << line_index << std::endl;
+				if(temp_cell == alive){
+					temp_gen.Birth(line_index-1,col_index);
+				}
+				col_index++;
+			}
+			col_index = 0;
+		}
+		line_index++;
+	}
+	return temp_gen;
+}
 
