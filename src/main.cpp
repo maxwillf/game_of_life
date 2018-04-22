@@ -3,6 +3,7 @@
 #include <vector>
 #include <cstring>
 #include <fstream>
+#include <sstream>
 
 
 int Stable(std::vector <Gen> &Game);
@@ -19,7 +20,7 @@ int main(int argc, char *argv[])
   std::vector<Gen> Try;
   Try.push_back(dump);
   std::ofstream ofs("historico.txt");
-
+  int linha, coluna;
 /*  for (int i = 0; i < 8; ++i) {
   	for (int j = 0; j < 3; ++j) {
   		if(i == 1 or i == 6 )
@@ -31,19 +32,19 @@ int main(int argc, char *argv[])
   	}
   } */
   
-/*  Try[0].Birth(2, 2); // Common Test for extinction;
+  Try[0].Birth(2, 2); // Common Test for extinction;
   Try[0].Birth(2, 4);
   Try[0].Birth(3, 2);
   Try[0].Birth(3, 3);
   Try[0].Birth(3, 4);
   Try[0].Birth(4, 2);
-  Try[0].Birth(4, 4); */
+  Try[0].Birth(4, 4); 
  
-  Try[0].Birth(3,2);
+  /*Try[0].Birth(3,2);
     Try[0].Birth(3,3);
     Try[0].Birth(4,2);// STABILITY TEST;
     Try[0].Birth(4,3); 
-
+*/
   int i = 0;
   std::string entry_dump;
   system("clear");
