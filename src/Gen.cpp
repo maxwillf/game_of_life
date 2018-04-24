@@ -72,16 +72,16 @@ int Gen::NeighboursCount(int Line,int Col)
 	return count;
 }
 /*! Cell Birth
- * \param int Line: The number of line of the cell that is going to live
- * \param int Col: The number of colum of the cell that is going to live
+ * \param int Line: The horizontal position of the cell that is going to be born
+ * \param int Col: The vertical position of the cell that is going to be born
   */                                   
 void Gen::Birth(int Line,int Col)
 {
 	Grid[Line][Col] = true;
 }
 /*! Cell Death
- * \param int Line: The number of line of the cell that is going to die
- * \param int Col: The number of colum of the cell that is going to die
+ *\param int Line: The horizontal position of the cell that is going to die
+ *\param int Col: The vertical position of the cell that is going to die
   */                                                                   
 void Gen::Death(int Line, int Col)
 {

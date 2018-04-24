@@ -13,20 +13,20 @@ Gen input(std::string filename);
 int main(int argc, char *argv[])
 {
 	if (argc != 2){
-	std::cout << "Please execute like this : ./game input.dat " << std::endl;
+	std::cout << "Please execute it like this : ./game input.dat " << std::endl;
 	} 
-	std::vector<Gen> Try;
+	std::vector<Gen> Life;
 	Gen gen1 = input(argv[1]);
-	Try.push_back(gen1);
+	Life.push_back(gen1);
 	std::ofstream ofs("historico.txt");
 	int linha, coluna;
 
 	int i = 0;
 	std::string entry_dump;
 	system("clear");
-	Try[i].Print();
+	Life[i].Print();
 	i++;
-	Update(Try);
+	Update(Life);
 	std::cout << "Wanna see the next generation? press y. Or n if you don't" << std::endl;
 	while(std::cin >> entry_dump){
 
@@ -36,14 +36,14 @@ int main(int argc, char *argv[])
 		}
 		else{
 			system("clear");
-			Try[i].Print();
-			Try[i].Print(ofs);
+			Life[i].Print();
+			Life[i].Print(ofs);
 
-			if((Try[i].Extinct())){
+			if((Life[i].Extinct())){
 				std::cout << "Extinct at Generation " << i+1 << std::endl;
 				break;
 			}
-			int stability = Stable(Try);
+			int stability = Stable(Life);
    
    			if(stability >= 0){
 				std::cout <<" Stable from Generation " << stability<< " To Generation "<<i << std::endl;
@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
 			}
 
 		i++;
-		Update(Try);
+		Update(Life);
 		std::cout << "Wanna see the next generation? press y. Or n if you don't" << std::endl;
 		std::cout << std::endl;
 		}
@@ -69,14 +69,16 @@ void Update(std::vector <Gen> &Game)
 	for (int i = 0; i < Game[index].Linhas(); ++i) {
 		for (int j = 0; j < Game[index].Colunas(); ++j) {
 
-			count = Game[index].NeighborsCount(i,j);
+			count = Game[index].NeighboursCount(i,j);
 
 			if(Game[index](i,j)){
 				if(count < 2 or count > 3){
-					Game[index +1 ].Death(i,j);
+					continue; /* As celulas que morreram nesta geração
+								 simplesmente não nascerão na próxima*/
 				}
 				else if(Game[index](i,j)){
-					Game[index +1].Birth(i,j); /* as celulas que não morreram permanecem vivas */
+					Game[index +1].Birth(i,j); /* as celulas que não morreram
+												  permanecem vivas */
 				}
 			}
 			else if(count == 3) {
