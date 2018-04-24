@@ -21,7 +21,7 @@ The board of the Game of Life is an infinite two-dimensional grid of square "cel
 If you want to simply play Conway's game of life then do:
 
 ```
-make project && ./game
+make project && ./game inputfile.dat
 ```
 
 Otherwise if you want to compile the game with all its documentation do:
