@@ -16,7 +16,7 @@ public:
   ~Gen();
 
 
-  int NeighborsCount(int Line,int Col); /*!< Counts the numbers of neighbors for the current cell*/
+  int NeighboursCount(int Line,int Col); /*!< Counts the numbers of neighbors for the current cell*/
   int Linhas(){ return NLin; };  /*!< returns the numbers of lines for the grid */
   int Colunas(){ return NCol; }; /*!< returns the numbers of columns for the grid */
   void Birth(int Line,int Col);  /*!< The Cell in the [Line][Col] index is born */

@@ -51,8 +51,11 @@ Gen::~Gen()
 	}
 	delete [] Grid;
 }
-
-int Gen::NeighborsCount(int Line,int Col)
+/*! Neighbours Counter
+ * \param int Line: The number of lines in the Grid 
+ * \param int Col: The number of columns in the Grid 
+  */
+int Gen::NeighboursCount(int Line,int Col)
 {
 	int count = 0;
 
@@ -68,24 +71,35 @@ int Gen::NeighborsCount(int Line,int Col)
 	}
 	return count;
 }
-
+/*! Cell Birth
+ * \param int Line: The number of line of the cell that is going to live
+ * \param int Col: The number of colum of the cell that is going to live
+  */                                   
 void Gen::Birth(int Line,int Col)
 {
 	Grid[Line][Col] = true;
 }
-
+/*! Cell Death
+ * \param int Line: The number of line of the cell that is going to die
+ * \param int Col: The number of colum of the cell that is going to die
+  */                                                                   
 void Gen::Death(int Line, int Col)
 {
 	Grid[Line][Col] = false;
 }
-
+/*! Operator () overload, returns Grid[i][j]
+ * \param int Line: The number of lines in the Grid 
+ * \param int Col: The number of lines in the Grid 
+  */                                                
 bool Gen::operator()(int Line, int Col)
 {
 	assert(Line >= 0 && Line < NLin);
 	assert(Col >= 0 && Col < NCol);
 	return Grid[Line][Col];
 }
-
+/*! Assignment operator overload
+ * \param Const Gen &rhs: A <Gen> class variable to be assigned
+ * */
 Gen& Gen::operator=(const Gen &rhs)
 {
 	for (int i = 0; i < NLin; ++i) {
@@ -95,6 +109,10 @@ Gen& Gen::operator=(const Gen &rhs)
 	}
 	return *this;
 }
+/*! Equality operator overload
+ * Compares if the two object's Grids are the same
+ *\param Const Gen &rhs: Object to be compared
+ */
 
 bool Gen::operator ==(const Gen & rhs)
 {
@@ -107,8 +125,11 @@ bool Gen::operator ==(const Gen & rhs)
 	}
 	return true;
 }
-
-
+/*! Generation Print method
+ * \param std::ostream &out: File to print the step (defauls to std::cout)
+ * \param char alive: symbol to represent living cells
+ * \param char lives: symbol to represent dead cells
+  */
 void Gen::Print(std::ostream &out, char alive, char lines)
 {
 	for (int i = 0; i < NLin; ++i) {
@@ -124,7 +145,9 @@ void Gen::Print(std::ostream &out, char alive, char lines)
 	}
 	out << std::endl;
 }
-
+/*! Extinction Checker
+ *	if all cells are dead, it's extinct.
+ * */
 bool Gen::Extinct()
 {
 	for (int i = 0; i < NLin; ++i) {
